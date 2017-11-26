@@ -1,5 +1,6 @@
 clc;
 clear;
+addpath('Dataset/');
 data = importdata('notMNIST_small.mat');
 images = data.images;
 labels = data.labels;
