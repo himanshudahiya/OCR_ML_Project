@@ -2,79 +2,79 @@ clc;
 clear;
 %%
 
-%% using MNIST dataset
-addpath('Load data functions/');
-addpath('Dataset/');
-trainX = loadMNISTImages('train-images.idx3-ubyte');
-trainY = loadMNISTLabels('train-labels.idx1-ubyte');
-testX = loadMNISTImages('t10k-images.idx3-ubyte');
-testY = loadMNISTLabels('t10k-labels.idx1-ubyte');
-
-trainX = trainX.';
-testX = testX.';
-%% taking training data
-dataX = zeros(6000,784,10);
-
-idx = zeros(10,1);
-for i=1:60000
-    dataX(idx(trainY(i,1)+1,1)+1,:,trainY(i,1)+1) = trainX(i,:);
-    idx(trainY(i,1)+1,1) = idx(trainY(i,1)+1,1)+1;
-end
-tempX = zeros(15000,784);
-tempY = zeros(15000,1);
-k = 1;
-for i=1:10
-    random=randperm(6000);
-    for j=1:1500
-        tempX(k,:) = dataX(random(j),:,i);
-        tempY(k,:) = i-1;
-        k = k+1;
-    end
-   
-end
-
-random = randperm(15000);
-X = zeros(15000,784);
-Y = zeros(15000,1);
-for i=1:15000
-    X(i,:) = tempX(random(i),:);
-    Y(i,:) = tempY(random(i),:);
-end
-
-
-%% taking test data
-
-dataX = zeros(1000,784,10);
-
-idx = zeros(10,1);
-for i=1:10000
-    dataX(idx(testY(i,1)+1)+1,:,testY(i,1)+1) = testX(i,:);
-    idx(testY(i,1)+1) = idx(testY(i,1)+1)+1;
-end
-testX = zeros(3000,784);
-testY = zeros(3000,1);
-k=1;
-for i=1:10
-    random=randperm(1000);
-    for j=1:300
-        testX(k,:) = dataX(random(j),:,i);
-        testY(k,:) = i-1;
-        k = k+1;
-    end
-   
-end
-%n1=15000, n2=3000, D =784
-[n1, D] = size(X);
-[n2, ~] = size(testX);
-trainX = zeros(n1,D+1);
-trainX(:,1)=1;
-trainX(:,2:D+1)=X(:,:);
-trainY = Y;
-validationX =zeros(n2,D+1);
-validationX(:,1)=1;
-validationX(:,2:D+1)=testX(:,:);
-
-validationY = testY;
+% %% using MNIST dataset
+% addpath('Load data functions/');
+% addpath('Dataset/');
+% trainX = loadMNISTImages('train-images.idx3-ubyte');
+% trainY = loadMNISTLabels('train-labels.idx1-ubyte');
+% testX = loadMNISTImages('t10k-images.idx3-ubyte');
+% testY = loadMNISTLabels('t10k-labels.idx1-ubyte');
+% 
+% trainX = trainX.';
+% testX = testX.';
+% %% taking training data
+% dataX = zeros(6000,784,10);
+% 
+% idx = zeros(10,1);
+% for i=1:60000
+%     dataX(idx(trainY(i,1)+1,1)+1,:,trainY(i,1)+1) = trainX(i,:);
+%     idx(trainY(i,1)+1,1) = idx(trainY(i,1)+1,1)+1;
+% end
+% tempX = zeros(15000,784);
+% tempY = zeros(15000,1);
+% k = 1;
+% for i=1:10
+%     random=randperm(6000);
+%     for j=1:1500
+%         tempX(k,:) = dataX(random(j),:,i);
+%         tempY(k,:) = i-1;
+%         k = k+1;
+%     end
+%    
+% end
+% 
+% random = randperm(15000);
+% X = zeros(15000,784);
+% Y = zeros(15000,1);
+% for i=1:15000
+%     X(i,:) = tempX(random(i),:);
+%     Y(i,:) = tempY(random(i),:);
+% end
+% 
+% 
+% %% taking test data
+% 
+% dataX = zeros(1000,784,10);
+% 
+% idx = zeros(10,1);
+% for i=1:10000
+%     dataX(idx(testY(i,1)+1)+1,:,testY(i,1)+1) = testX(i,:);
+%     idx(testY(i,1)+1) = idx(testY(i,1)+1)+1;
+% end
+% testX = zeros(3000,784);
+% testY = zeros(3000,1);
+% k=1;
+% for i=1:10
+%     random=randperm(1000);
+%     for j=1:300
+%         testX(k,:) = dataX(random(j),:,i);
+%         testY(k,:) = i-1;
+%         k = k+1;
+%     end
+%    
+% end
+% %n1=15000, n2=3000, D =784
+% [n1, D] = size(X);
+% [n2, ~] = size(testX);
+% trainX = zeros(n1,D+1);
+% trainX(:,1)=1;
+% trainX(:,2:D+1)=X(:,:);
+% trainY = Y;
+% validationX =zeros(n2,D+1);
+% validationX(:,1)=1;
+% validationX(:,2:D+1)=testX(:,:);
+% 
+% validationY = testY;
 %% notMNIST DATASET
 % addpath('Dataset/');
 % data = importdata('notMNIST_small.mat');
@@ -96,12 +96,12 @@ validationY = testY;
 %     l=2;
 % end
 % 
-% ratio=0.8;
-% n1=fix(0.8*c);
-% D=a*b;
-% n2=c-n1;
+%ratio=0.8;
+%n1=0.8*c;
+%D=a*b;
+%n2=c-n1;
 % in=1;
-% testX=zeros(n2,D+1);
+% testX=zeros(n2,a*b+1);
 % testlabels=zeros(n2,1);
 % c=n1;
 % X=zeros(c,D+1);

@@ -19,7 +19,7 @@ end
 
 %splitting into training and validation
 iporder = randperm(c);
-ratio = 0.99;
+ratio = 0.80;
 
 n1 = fix(ratio*c);
 n2 = c - n1;
