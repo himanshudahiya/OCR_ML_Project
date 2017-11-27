@@ -134,7 +134,7 @@ for x = 1 : no_of_classes
             Wtemp=Wcurrent;
             Wtemp(1,1)=0;
             diff=((1/cnew)*diff)+((lambda/cnew)*Wtemp);
-            Wcurrent=Wcurrent-(inv(H)*diff);
+            Wcurrent=Wcurrent-(H\diff);
 
         end
         

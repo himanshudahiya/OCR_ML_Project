@@ -62,7 +62,7 @@ for i=1:n2
     
     for q=1:k
         [val,ind(q)] = min(tempDistance(:,1));
-        ind(q)
+        ind(q);
         tempDistance(ind(q)) = []; 
         output(q) = trainY(ind(q));
     end
