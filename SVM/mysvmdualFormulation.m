@@ -1,13 +1,8 @@
 function [ alpha ] = mysvmdualFormulation( X, Y, K, C )
-
-    N = size(X, 1)
-    
+    N = size(X, 1);
     H = zeros(N,N);
-    
-    for i = 1:N
-        
+    for i = 1:N        
         for j=1:N
-            
             H(i,j) = Y(i,1)*Y(j,1)*K(i,j);
         end
     end

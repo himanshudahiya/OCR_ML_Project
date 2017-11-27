@@ -1,2 +1,43 @@
-Download notMNIST data set from: https://drive.google.com/drive/folders/1Si0NONhCWaetQq4lbNwXWBRJwYy0mxKx?usp=sharing
-Put this in 'Dataset' folder and run the scripts.
+README!!
+Himanshu Dahiya
+2015CSB1013
+Shreya Dubey
+2015CSB1074
+============================================================================================================================================
+Optical Character Recognition For Hand Written Digits and Computer Fonts
+
+Download the dataset of MNIST and notMNIST from: https://drive.google.com/drive/folders/1Si0NONhCWaetQq4lbNwXWBRJwYy0mxKx?usp=sharing
+
+Create a new directory 'Dataset' and put these datasets in this directory.
+
+Make sure 'Dataset' folder is in Project Folder.
+
+============================================================================================================================================
+
+The project is based on MATLAB. There are various scripts.
+
+For kNN:
+1. Run kNN_MNIST.m to test upon MNIST dataset.
+2. Run kNN_notMNIST.m to test upon notMNIST dataset.
+
+For L2 Logistic Regression:
+1. Run L2LogisticRegression_MNIST.m to test upon MNIST dataset.
+2. Run L2LogisticRegression_notMNIST.m to test upon notMNIST dataset.
+
+For SVM:
+1. Go into SVM folder. All the scripts and functions related to SVM are in SVM folder only.
+2. Run MainSVMTrainTest_MNIST.m to test upon MNIST dataset.
+3. Run MainSVMTrainTest_notMNIST.m to test upon notMNIST dataset.
+
+Outputs will be displayed after the execution completes in each case. The error/accuracy shown for each model is for test data only. 
+
+============================================================================================================================================
+
+To change input size of training and testing dataset in MNIST, open scripts related to MNIST dataset, and set the value of following variables:
+1. numberoftrainingexamples for setting size of training examples. Default is set to 15000. Maximum value can be 60000.
+2. numberoftestingexamples for setting size of testing examples. Default is set to 3000. Maximum value can be 10000.
+
+============================================================================================================================================
+
+To change division ratio of training and testing dataset in notMNIST, open scripts related to notMNIST dataset, and set the value of following variables:
+1. ratio for setting size of ratio in which training and testing are to be divided. Default is set to .80 which means 80% training data and 20% testing data. 
